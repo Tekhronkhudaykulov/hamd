@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "./store/profileSlice";
 import Logout from "./components/Logout/Logout";
+import InformClient from "./components/informAboutClient/InformClient";
+
 function App() {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.profile);
@@ -22,6 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path={"inform"} element={<InformClient />} />
         <Route
           path={"*"}
           element={<Navigate to={!token ? "login" : "main/first"} />}

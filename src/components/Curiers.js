@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import CurierImg from "../assets/img/courier.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getCuriers } from "../store/kurierSlice";
 import ReactLoading from "react-loading";
+import { addModal } from "../store/kurierSlice";
+import Curier from "./Curier";
 
 const Curiers = () => {
+  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const data = useSelector((state) => {
     const st = state.curier;
@@ -19,10 +21,28 @@ const Curiers = () => {
     dispatch(getCuriers());
   }, []);
 
+  const curierAdd = (product) => {
+    const curier = {
+      id: product.id,
+      name: product.courier.name,
+      addres: product.address,
+      map_location: product.map_location,
+    };
+    dispatch(addModal(curier));
+  };
+
   return (
     <>
       <div className="couriers">
-        <p className="curier-title">Курьеры</p>
+        <div className="input-title">
+          <p className="curier-title">Курьеры</p>
+          <input
+            type="text"
+            placeholder="Kurierning idisini kiriting"
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+          />
+        </div>
         <div className="loading">
           {data.isLoading && (
             <ReactLoading
@@ -34,24 +54,15 @@ const Curiers = () => {
           )}
         </div>
         <div className="all_curier">
-          {data.curiers.map((item, id) => (
-            <div className="courier" key={id}>
-              <img src={CurierImg} alt="" />
-              <div className="courier-info">
-                <p>
-                  <span>Курьер:</span>
-                  {item.courier.name ?? "NE UKAZANO"}
-                </p>
-                <p>
-                  <span>ID заказа:</span>#{item.courier.id}
-                </p>
-                <p>
-                  <span>Маршрут:</span>
-                  {item.address}
-                </p>
-              </div>
-            </div>
-          ))}
+          {search.length > 0
+            ? data.curiers
+                .filter((item) => item.id == search)
+                .map((item, id) => (
+                  <Curier item={item} curierAdd={curierAdd} id={id} />
+                ))
+            : data.curiers.map((item, id) => (
+                <Curier item={item} curierAdd={curierAdd} id={id} />
+              ))}
         </div>
       </div>
     </>

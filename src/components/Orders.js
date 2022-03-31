@@ -23,21 +23,21 @@ const Orders = () => {
     fetchData();
   }, []);
 
-  const deleteId = async (id) => {
-    const order_id = orders.filter((item) => item.id === id);
-    const payload = {
-      order_id: order_id,
-    };
-    try {
-      const { data } = await axios.post(
-        "http://hamd.loko.uz/api/operator/order-remove",
-        payload
-      );
-      setOrders(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const deleteId = async (id) => {
+  //   const order_id = orders.filter((item) => item.id === id);
+  //   const payload = {
+  //     order_id: order_id,
+  //   };
+  //   try {
+  //     const { data } = await axios.post(
+  //       "http://hamd.loko.uz/api/operator/order-remove",
+  //       payload
+  //     );
+  //     setOrders(data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
     <>
       <div className="main_bottom_orders">
@@ -59,9 +59,9 @@ const Orders = () => {
               <p className="itog">
                 <span>Итог......</span>
                 <span>{item.product_total_sum} сум</span>
-                <div className="delete" onClick={() => deleteId(item.id)}>
+                {/* <div className="delete" onClick={() => deleteId(item.id)}>
                   <DeleteOutlined style={{ fontSize: "30px" }} />
-                </div>
+                </div> */}
               </p>
             }
           </>

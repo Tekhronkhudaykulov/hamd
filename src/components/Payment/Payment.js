@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import Back from "../Back";
 import "./Payment.scss";
 import Modal from "../Modal/Modal";
+import { useSelector } from "react-redux";
 const Payment = () => {
   const [modalOpen, setModalOpen] = useState(false);
 

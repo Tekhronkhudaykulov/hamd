@@ -1,12 +1,13 @@
 import React from "react";
 import "./BarMain.scss";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Curiers from "../Curiers";
 import Orders from "../Orders";
 import AllCurierMap from "../Map";
 import { NavLink } from "react-router-dom";
 
 const BarMain = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="bar-main">
@@ -21,8 +22,8 @@ const BarMain = () => {
           </div>
           <AllCurierMap />
           <Curiers />
-          <div className="left-bottom">
-            <NavLink to={"/main/bar"}>Кухня</NavLink>
+          <div onClick={() => navigate("/main/bar")} className="left-bottom">
+            <div>Кухня</div>
           </div>
         </div>
         <div className="bar-main-right">

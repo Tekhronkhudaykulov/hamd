@@ -35,47 +35,51 @@ const Auth = () => {
 
   return (
     <>
-      <h1>
-        r<span>_</span>keeper
-      </h1>
-      <Form
-        name="basic"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        onFinish={login}
-        onFinishFailed={onFinishFailed}
-      >
-        <Form.Item name="login">
-          <Input placeholder="Логин" />
-        </Form.Item>
-        <Form.Item name="password">
-          <Input.Password placeholder="Пароль" />
-        </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Button className="button" type="primary" htmlType="submit">
-            {isLoading ? (
-              <div className="loading">
-                <ReactLoading
-                  width={40}
-                  type="spinningBubbles"
-                  color={"white"}
-                />
-              </div>
-            ) : (
-              "Войти"
-            )}
-          </Button>
-        </Form.Item>
-      </Form>
+      <div className="allAuth">
+        <h1>
+          <span style={{ color: "black" }}>HAMD</span>
+        </h1>
+        <div className="body">
+          <Form
+            name="basic"
+            labelCol={{
+              span: 8,
+            }}
+            wrapperCol={{
+              span: 16,
+            }}
+            onFinish={login}
+            onFinishFailed={onFinishFailed}
+          >
+            <Form.Item name="login">
+              <Input placeholder="Логин" />
+            </Form.Item>
+            <Form.Item name="password">
+              <Input.Password placeholder="Пароль" />
+            </Form.Item>
+            <Form.Item
+              wrapperCol={{
+                offset: 8,
+                span: 16,
+              }}
+            >
+              <Button className="button" type="primary" htmlType="submit">
+                {isLoading ? (
+                  <div className="loading">
+                    <ReactLoading
+                      width={40}
+                      type="spinningBubbles"
+                      color={"white"}
+                    />
+                  </div>
+                ) : (
+                  "Войти"
+                )}
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
+      </div>
     </>
   );
 };

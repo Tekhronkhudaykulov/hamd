@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// http://hamd.loko.uz/api/operator/couriers-way
 const initialState = {
   isLoading: true,
   curiers: [],
   isError: false,
+  courier: null,
 };
 
 export const getCuriers = createAsyncThunk(
@@ -33,6 +33,12 @@ export const curierSlice = createSlice({
     setLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+    addModal: (state, action) => {
+      return {
+        ...state,
+        courier: action.payload,
+      };
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCuriers.fulfilled, (state, { payload }) => {
@@ -41,5 +47,5 @@ export const curierSlice = createSlice({
   },
 });
 
-export const { setCuriers, setLoading } = curierSlice.actions;
+export const { setCuriers, setLoading, addModal } = curierSlice.actions;
 export default curierSlice.reducer;

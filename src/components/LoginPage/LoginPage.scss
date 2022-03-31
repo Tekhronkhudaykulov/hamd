@@ -1,13 +1,13 @@
 html {
   height: 100%;
 }
-body {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
+
+.allAuth {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  flex-direction: column;
+  height: 100vh;
 }
 h1 {
   font-size: 7rem;
@@ -41,7 +41,7 @@ form label {
 .input__goup {
   display: flex;
   background-color: #e3e4e1;
-  width: 100%;
+  width: 70%;
   padding: 2px;
 }
 .button {
@@ -52,11 +52,25 @@ form label {
   color: #fff;
   padding: 10px 20px;
   cursor: pointer;
-  width: 104%;
+  width: 108.5%;
 }
 
 .loading {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.ant-input-suffix {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+.ant-input-affix-wrapper.ant-input-password {
+  position: relative;
+}
+
+h1 {
+  width: 106%;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./BarAside.scss";
 import succes from "../../assets/img/check-succes.svg";
 import xclosesvg from "../../assets/img/Xclosesvg.svg";
@@ -7,17 +7,15 @@ import { NavLink } from "react-router-dom";
 import { clearOrder } from "../../store/orderSlice";
 
 const BarAside = () => {
-  const dispatch = useDispatch(0);
+  const dispatch = useDispatch();
   const meals = useSelector((state) => state.order.meals);
-
   const initialState = 0;
-  const initial = "";
   const allSum = meals.reduce(
     (amount, meal) => amount + meal.amount * meal.price,
     initialState
   );
+  const initial = "";
   const allName = meals.map((item) => item.name);
-
   const count = meals.map((item) => item.amount, initial);
 
   const filter = () => {
@@ -44,6 +42,7 @@ const BarAside = () => {
           </div>
         </div>
       </div>
+
       <div className="bar-aside-bottom">
         <div className="bar-total">Оплатить Сум: {allSum}</div>
       </div>

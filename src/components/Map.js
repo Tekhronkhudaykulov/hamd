@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+
 import {
   GoogleMap,
-  Marker,
   LoadScript,
+  Marker,
   useJsApiLoader,
+  InfoBox,
+  Scrtip,
+  InfoWindow,
+  Data,
 } from "@react-google-maps/api";
-import Car from "../assets/img/Vector.png";
 import { useSelector } from "react-redux";
 const containerStyle = {
   width: "100%",
@@ -13,20 +17,20 @@ const containerStyle = {
 };
 
 const center = {
-  lat: 39.6408686,
-  lng: 66.8278026,
+  lat: 39.627,
+  lng: 66.975,
 };
 
 const AllCurierMap = () => {
-  const apiKey = "AIzaSyAgt640vavAQNsK5G0e06laoOGmOBMPmvg";
+  const [infoVisible, setInfoVisible] = useState(false);
 
-  const curiers = useSelector((state) => state.curier.curiers);
+  const apiKey = "AIzaSyAoud-_7sLGaEDVV5s8QvtTeGzI9dunLqU";
+
+  const curier = useSelector((state) => state.curier.courier);
 
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
-    // const bounds = new window.google.maps.LatLngBounds();
-    // map.fitBounds(bounds);
     setMap(map);
   }, []);
 
@@ -34,9 +38,17 @@ const AllCurierMap = () => {
     setMap(null);
   }, []);
 
+  let lat, lng;
+
+  if (curier) {
+    let loc = curier.map_location.split(",");
+    lat = +loc[0];
+    lng = +loc[1];
+  }
+
   return (
     <div className="map">
-      <LoadScript>
+      <LoadScript googleMapsApiKey="AIzaSyAoud-_7sLGaEDVV5s8QvtTeGzI9dunLqU">
         <GoogleMap
           mapContainerStyle={containerStyle}
           zoom={10}
@@ -44,18 +56,32 @@ const AllCurierMap = () => {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          {curiers.map((item, index) => {
-            const coords = item.map_location.split(",");
-            return (
+          {curier && (
+            <>
               <Marker
-                key={index}
-                onClick={() => {
-                  console.log({ id: item.id });
-                }}
-                position={{ lat: +coords[0], lng: +coords[1] }}
+                onClick={() => setInfoVisible(true)}
+                position={{ lat, lng }}
               />
-            );
-          })}
+              {infoVisible && (
+                <InfoWindow
+                  onCloseClick={() => setInfoVisible(false)}
+                  position={{ lat, lng }}
+                >
+                  <div>
+                    <p>
+                      Курьер: <span>{curier.name}</span>
+                    </p>
+                    <p>
+                      ID заказа: <span>#{curier.id}</span>
+                    </p>
+                    <p>
+                      Маршрут: <span>{curier.addres}</span>
+                    </p>
+                  </div>
+                </InfoWindow>
+              )}
+            </>
+          )}
         </GoogleMap>
       </LoadScript>
     </div>

@@ -45,6 +45,14 @@ body {
       }
       .map {
         padding: 5px;
+        p {
+          color: green !important;
+          margin-top: 3px;
+          margin-bottom: 3px;
+          span {
+            color: black;
+          }
+        }
       }
       .map_F {
         width: 100%;
@@ -71,6 +79,7 @@ body {
             align-items: center;
             border-radius: 5px;
             border: 1px solid #61ae17;
+            cursor: pointer;
             img {
               width: 45px;
               height: 45px;
@@ -96,13 +105,19 @@ body {
           .first-bar {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 100px;
+            grid-template-rows: 100px 100px;
             grid-gap: 5px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
             div {
               display: flex;
               align-items: center;
               justify-content: center;
               background-color: #849ec8;
+              cursor: pointer;
               a {
                 text-decoration: none;
                 color: white;
@@ -211,6 +226,12 @@ body {
       height: 40px;
       margin-top: 4px;
       margin-bottom: 10px;
+      align-items: center;
+      justify-items: center;
+      background-color: #849ec8;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
       a {
         background-color: #849ec8;
         color: white;

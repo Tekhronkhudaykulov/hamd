@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ReactLoading from "react-loading";
 import axios from "axios";
 
 import Back from "../Back";
 import "./BarKuxnya.scss";
 function BarKuxnya() {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const [categoryProduct, setCategoryProduct] = useState([""]);
@@ -33,8 +34,12 @@ function BarKuxnya() {
         <Back />
         {categoryProduct.map((item, index) => (
           <>
-            <div key={index} className="div">
-              <NavLink to={`/main/allFoods/${item.id}`}>{item.name}</NavLink>
+            <div
+              onClick={() => navigate(`/main/allFoods/${item.id}`)}
+              key={index}
+              className="div"
+            >
+              {item.name}
             </div>
           </>
         ))}
