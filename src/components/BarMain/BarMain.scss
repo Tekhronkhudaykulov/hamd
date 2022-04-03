@@ -5,16 +5,17 @@ body {
 }
 .wrapper {
   max-width: 1300px;
-  margin: 20px auto;
-  max-height: 900px;
+  margin: 5px auto;
+  max-height: 1000px;
   display: flex;
   .i-container {
     display: grid;
     grid-template-columns: 75% 1fr;
     background-color: #e9eadf;
+    flex: 1 1 auto;
     .bar-main {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 420px 1fr;
       border: 1px solid black;
       .bar-main-left {
         width: 100%;
@@ -66,6 +67,12 @@ body {
           font-weight: bold;
           margin-top: -3px;
         }
+        .curier_input {
+          width: 60%;
+          height: 30px;
+          padding: 0 10px;
+          margin: 0 0 20px 0;
+        }
         .all_curier {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
@@ -80,6 +87,7 @@ body {
             border-radius: 5px;
             border: 1px solid #61ae17;
             cursor: pointer;
+            height: 100%;
             img {
               width: 45px;
               height: 45px;
@@ -245,7 +253,6 @@ body {
 }
 .bar-main-bottom {
   text-align: center;
-  width: 199.5%;
   border: 1px solid;
   height: 34px;
   margin-top: -6px;

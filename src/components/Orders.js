@@ -18,7 +18,6 @@ const Orders = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     fetchData();
   }, []);

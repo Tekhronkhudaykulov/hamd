@@ -1,34 +1,82 @@
-.i-modal {
+.allSamovizov {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 300px;
+  background-color: white;
+  flex-direction: column;
+  box-shadow: 0 1px 10px rgba($color: #7e94e2, $alpha: 0.7);
+  margin-top: 80px;
+  border-radius: 10px;
+  cursor: pointer;
+  img {
+    width: 150px;
+    object-fit: contain;
+    height: 150px;
+    height: 150px;
+  }
+  p {
+    color: #484747;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+.allDostavka {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 300px;
+  background-color: white;
+  flex-direction: column;
+  box-shadow: 0 1px 10px rgba($color: #61ae17, $alpha: 0.25);
+  border-radius: 10px;
+  margin-top: 80px;
+  cursor: pointer;
+  img {
+    width: 150px;
+    object-fit: contain;
+    height: 150px;
+    height: 150px;
+  }
+  p {
+    color: #484747;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+.allKiper {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
-  display: none;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background-color: rgba(66, 133, 244, 16%);
+  background-color: #e9eadf;
   z-index: 9999;
-  .i-modal-box {
-    background-color: #344a5c;
-    padding: 30px;
-    width: 100%;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    color: #fff;
-    .d-flex {
+  .container {
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 80px;
+    h2 {
+      margin: 0;
+    }
+    .type-dostavka {
       display: flex;
       align-items: center;
-      a {
-        margin-right: 20px;
-        padding: 10px 41px;
-        background: #486680;
-        border: 2px solid #828380;
+      justify-content: space-between;
+    }
+    .imgArrow {
+      width: 130px;
+      height: 60px;
+      background-color: #7e94e2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      img {
+        width: 35px;
+        color: white;
         color: white;
       }
     }

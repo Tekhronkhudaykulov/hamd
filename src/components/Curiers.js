@@ -20,7 +20,7 @@ const Curiers = () => {
   useEffect(() => {
     dispatch(getCuriers());
   }, []);
-
+  console.log(data, "kurierlar ");
   const curierAdd = (product) => {
     const curier = {
       id: product.id,
@@ -38,6 +38,7 @@ const Curiers = () => {
           <p className="curier-title">Курьеры</p>
           <input
             type="text"
+            className="curier_input"
             placeholder="Kurierning idisini kiriting"
             onChange={(e) => setSearch(e.target.value)}
             value={search}
