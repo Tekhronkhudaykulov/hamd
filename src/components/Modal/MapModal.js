@@ -10,24 +10,18 @@ import {
   InfoWindow,
   Data,
 } from "@react-google-maps/api";
-import { useSelector } from "react-redux";
 const containerStyle = {
   width: "100%",
-  height: "250px",
+  height: "450px",
 };
 
 const center = {
   lat: 39.627,
   lng: 66.975,
 };
+const apiKey = "AIzaSyBwzP3dsqHy01cJn725QbqQ0C6iPiQh0-0";
 
-const AllCurierMap = () => {
-  const [infoVisible, setInfoVisible] = useState(false);
-
-  const apiKey = "AIzaSyAoud-_7sLGaEDVV5s8QvtTeGzI9dunLqU";
-
-  const curier = useSelector((state) => state.curier.courier);
-
+const MapModal = () => {
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
@@ -37,14 +31,6 @@ const AllCurierMap = () => {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
   }, []);
-
-  let lat, lng;
-
-  if (curier) {
-    let loc = curier.map_location.split(",");
-    lat = +loc[0];
-    lng = +loc[1];
-  }
 
   return (
     <div className="map">
@@ -56,7 +42,7 @@ const AllCurierMap = () => {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          {curier && (
+          {/* {curier && (
             <>
               <Marker
                 onClick={() => setInfoVisible(true)}
@@ -81,11 +67,11 @@ const AllCurierMap = () => {
                 </InfoWindow>
               )}
             </>
-          )}
+          )} */}
         </GoogleMap>
       </LoadScript>
     </div>
   );
 };
 
-export default React.memo(AllCurierMap);
+export default React.memo(MapModal);

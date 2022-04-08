@@ -1,73 +1,35 @@
-import React from "react";
-import { PlusSquareOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
 import ArrowLeft from "../../assets/img/arrow-left.svg";
-
 import "./DostavkaModal.scss";
+import MapModal from "./MapModal";
+import DostavkaInput from "./DostavkaInput";
 const DostavkaModal = ({ closeModal }) => {
   return (
     <div className="dostavkamodal">
-      <div className="adresBtn">
-        <h2>Адрес</h2>
-      </div>
-      <div className="allKlient">
-        <div>
-          <p>СТРАНА</p>
-          <input type="text" />
+      <div className="container">
+        <p className="samo">Доставка</p>
+        <div className="imgArrow imgnext" onClick={() => closeModal(true)}>
+          <img src={ArrowLeft} alt="" />
         </div>
-        <div>
-          <p>ГОРОД</p>
-          <input type="text" />
-          <div className="icon">
-            <PlusSquareOutlined />
+        <DostavkaInput />
+        {/* <MapModal /> */}
+        <div className="price">
+          <div className="summa-zakaza">
+            <p>Сумма заказа:</p>
+            <span>10000 сум</span>
+          </div>
+          <div className="summa-dostavki">
+            <p>Сумма доставки:</p>
+            <span>2000 сум</span>
+          </div>
+          <div className="summa-all">
+            <p>Общая сумма:</p>
+            <span>1000000 сум</span>
+          </div>
+          <div className="zakazat">
+            <p>Подвердить</p>
           </div>
         </div>
-        <div>
-          <p>УЛИЦА</p>
-          <input type="text" />
-        </div>
-        <div>
-          <p>ДОМ</p>
-          <input type="number" />
-        </div>
-        <div>
-          <p>ЭТАЖ</p>
-          <input type="text" />
-        </div>
-        <div>
-          <p>ПОДЪЕЗД</p>
-          <input type="number" />
-        </div>
-      </div>
-      <h2>Заказ</h2>
-      <div className="allKlient">
-        <div>
-          <p>ТИП ЗАКАЗА</p>
-          <input type="text" />
-        </div>
-        <div>
-          <p>РЕСТОРАН</p>
-          <input type="text" />
-        </div>
-        <div>
-          <p>ВРЕМЯ ДОСТАВКИ</p>
-          <input type="text" />
-        </div>
-        <div>
-          <p>СУММА ЗАКАЗА</p>
-          <input type="number" />
-        </div>
-        <div>
-          <p>СУММА К ОПЛАТЕ</p>
-          <input type="text" />
-        </div>
-        <div>
-          <p>СПОСОБ ОПЛАТЫ</p>
-          <input type="number" />
-        </div>
-      </div>
-      <div className="dob-exit">
-        <button>Добавить</button>
-        <img onClick={() => closeModal(true)} src={ArrowLeft} alt="" />
       </div>
     </div>
   );

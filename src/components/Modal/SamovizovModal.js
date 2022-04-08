@@ -6,10 +6,13 @@ import ArrowLeft from "../../assets/img/arrow-left.svg";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "./SamovizovModal.scss";
+
 const SamovizovModal = ({ closeModal }) => {
-  const [value, setValue] = useState("самовывоз");
+  const [valueSam, setValueSam] = useState("самовывоз");
   const [change, setChange] = useState(false);
   const [phone, setPhone] = useState("");
+  const [phone1, setPhone1] = useState("");
+
   const [filial, setFilial] = useState("Самарканд");
 
   const ToggleSwtich = () => {
@@ -19,7 +22,10 @@ const SamovizovModal = ({ closeModal }) => {
   return (
     <div className="samovizovmodal">
       <div className="container">
-        <p>Самовывоз</p>
+        <p className="samo">Самовывоз</p>
+        <div className="imgArrow imgnext" onClick={() => closeModal(true)}>
+          <img src={ArrowLeft} alt="" />
+        </div>
         <Box
           component="form"
           sx={{
@@ -49,8 +55,8 @@ const SamovizovModal = ({ closeModal }) => {
               <PhoneInput
                 inputClass="inputColor"
                 country={"uz"}
-                value={phone}
-                onChange={(phone) => setPhone(phone)}
+                value={phone1}
+                onChange={(phone) => setPhone1(phone)}
                 defaultMask={"(..) ...-..-.."}
                 alwaysDefaultMask={true}
               />
@@ -61,29 +67,33 @@ const SamovizovModal = ({ closeModal }) => {
               id="outlined-required"
               placeholder="самовывоз"
               label="Тип заказа"
-              value={value}
+              value={valueSam}
             />
             <TextField
               required
               id="outlined-required"
-              label="Филлал"
-              placeholder="Филлал"
+              placeholder="самовывоз"
+              label="Fillial"
               value={filial}
             />
           </div>
         </Box>
-        <div className="summa-zakaza">
-          <p>
-            Сумма заказа: <span>10000</span>
-          </p>
-        </div>
-        <div className="summa-dostavki">
-          <p>
-            Сумма доставки: <span>2000</span>
-          </p>
-        </div>
-        <div className="imgNext" onClick={() => closeModal(true)}>
-          <img src={ArrowLeft} alt="" />
+        <div className="price">
+          <div className="summa-zakaza">
+            <p>Сумма заказа:</p>
+            <span>10000 сум</span>
+          </div>
+          <div className="summa-dostavki">
+            <p>Сумма доставки:</p>
+            <span>2000 сум</span>
+          </div>
+          <div className="summa-all">
+            <p>Общая сумма:</p>
+            <span>1000000 сум</span>
+          </div>
+          <div className="zakazat">
+            <p>Подвердить</p>
+          </div>
         </div>
       </div>
     </div>
