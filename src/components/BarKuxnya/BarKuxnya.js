@@ -16,7 +16,7 @@ function BarKuxnya() {
       setIsLoading(true);
       console.log("loading yest");
       const { data } = await axios.get(
-        "http://hamd.loko.uz/api/operator/category?type=product"
+        "https://hamd.loko.uz/api/operator/category?type=product"
       );
       setCategoryProduct(data.data);
     } catch (error) {

@@ -26,7 +26,7 @@ const AllProduct = () => {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
-        `http://hamd.loko.uz/api/operator/product?category_id=${categoryId}`
+        `https://hamd.loko.uz/api/operator/product?category_id=${categoryId}`
       );
       setAllProduct(data.data);
     } catch (error) {

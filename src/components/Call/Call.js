@@ -13,7 +13,7 @@ const Call = () => {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
-        "http://hamd.loko.uz/api/operator/last-calls"
+        "https://hamd.loko.uz/api/operator/last-calls"
       );
       setCall(data.data);
     } catch (error) {

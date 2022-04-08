@@ -12,7 +12,7 @@ export const getCuriers = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const res = await axios.get(
-        "http://hamd.loko.uz/api/operator/couriers-way"
+        "https://hamd.loko.uz/api/operator/couriers-way"
       );
       return res.data.data;
     } catch (e) {

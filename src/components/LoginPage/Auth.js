@@ -16,7 +16,7 @@ const Auth = () => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(
-        "http://hamd.loko.uz/api/operator/sign-in",
+        "https://hamd.loko.uz/api/operator/sign-in",
         values
       );
       localStorage.setItem("token", data.data.token);

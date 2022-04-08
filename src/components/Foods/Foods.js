@@ -11,7 +11,7 @@ const Foods = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://hamd.loko.uz/api/operator/product"
+        "https://hamd.loko.uz/api/operator/product"
       );
       setProduct(data.data);
     } catch (error) {

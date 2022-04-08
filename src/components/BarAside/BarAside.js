@@ -5,8 +5,8 @@ import xclosesvg from "../../assets/img/Xclosesvg.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { clearOrder } from "../../store/orderSlice";
+import { changeCount } from "../../store/orderSlice";
 import Modal from "../Modal/Modal";
-
 const BarAside = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -19,8 +19,12 @@ const BarAside = () => {
   );
   const initial = "";
   const allName = meals.map((item) => item.name);
-  const count = meals.map((item) => item.amount, initial);
-
+  const count = meals.map((item) => {
+    return { amount: item.amount, id: item.id };
+  }, initial);
+  console.log("====================================");
+  console.log(count);
+  console.log("====================================");
   const filter = () => {
     dispatch(clearOrder(meals));
   };
@@ -40,7 +44,21 @@ const BarAside = () => {
             <div className="bar_main_bot">
               {count.map((item) => (
                 <>
-                  <p>{item}</p>
+                  <button
+                    onClick={() =>
+                      dispatch(changeCount({ id: item.id, node: 1 }))
+                    }
+                  >
+                    +
+                  </button>
+                  <p>{item.amount}</p>
+                  <button
+                    onClick={() =>
+                      dispatch(changeCount({ id: item.id, node: -1 }))
+                    }
+                  >
+                    -
+                  </button>
                 </>
               ))}
             </div>
@@ -76,3 +94,8 @@ const BarAside = () => {
 };
 
 export default BarAside;
+// const [change, setChange] = useState(false);
+
+// const ToggleSwtich = () => {
+//   change ? setChange(false) : setChange(true);
+// };

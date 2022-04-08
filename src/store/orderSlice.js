@@ -35,7 +35,21 @@ export const orderSlice = createSlice({
         meals: [...meals],
       };
     },
-
+    changeCount: (state, { payload }) => {
+      let { id, node } = payload;
+      return {
+        ...state,
+        meals: state.meals.map((item) => {
+          if (item.id == id) {
+            return {
+              ...item,
+              amount: item.amount + node,
+            };
+          }
+          return item;
+        }),
+      };
+    },
     setPaymentType: (state, paymentType) => {
       return {
         ...state,
@@ -44,5 +58,6 @@ export const orderSlice = createSlice({
     },
   },
 });
-export const { addMeal, setPaymentType, clearOrder } = orderSlice.actions;
+export const { addMeal, setPaymentType, clearOrder, changeCount } =
+  orderSlice.actions;
 export default orderSlice.reducer;
