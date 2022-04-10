@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   GoogleMap,
@@ -34,42 +34,13 @@ const MapModal = () => {
 
   return (
     <div className="map">
-      <LoadScript googleMapsApiKey={apiKey}>
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          zoom={10}
-          center={center}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-        >
-          {/* {curier && (
-            <>
-              <Marker
-                onClick={() => setInfoVisible(true)}
-                position={{ lat, lng }}
-              />
-              {infoVisible && (
-                <InfoWindow
-                  onCloseClick={() => setInfoVisible(false)}
-                  position={{ lat, lng }}
-                >
-                  <div>
-                    <p>
-                      Курьер: <span>{curier.name}</span>
-                    </p>
-                    <p>
-                      ID заказа: <span>#{curier.id}</span>
-                    </p>
-                    <p>
-                      Маршрут: <span>{curier.addres}</span>
-                    </p>
-                  </div>
-                </InfoWindow>
-              )}
-            </>
-          )} */}
-        </GoogleMap>
-      </LoadScript>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        zoom={10}
+        center={center}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      ></GoogleMap>
     </div>
   );
 };

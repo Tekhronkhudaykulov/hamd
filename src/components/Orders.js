@@ -5,7 +5,7 @@ import axios from "axios";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    setInterval(() => fetchData(), 1000);
+    setInterval(() => fetchData(), 10000);
   }, []);
 
   const fetchData = async () => {
