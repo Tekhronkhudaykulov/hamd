@@ -3,13 +3,12 @@ import "./BarAside.scss";
 import succes from "../../assets/img/check-succes.svg";
 import xclosesvg from "../../assets/img/Xclosesvg.svg";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { clearOrder } from "../../store/orderSlice";
 import { changeCount } from "../../store/orderSlice";
-import Modal from "../Modal/Modal";
+import { Link } from "react-router-dom";
 const BarAside = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
   const dispatch = useDispatch();
   const meals = useSelector((state) => state.order.meals);
   const initialState = 0;
@@ -69,26 +68,16 @@ const BarAside = () => {
           <div className="bar-total">Оплатить Сум: {allSum}</div>
         </div>
         <div className="bar-aside-bottom-img">
-          <div
-            className="img-1"
-            onClick={() => {
-              if (!modalOpen) setModalOpen(true);
-            }}
-          >
-            <img src={succes} alt="" />
-          </div>
-          <NavLink className="img-2" to={"/main/first"}>
-            <img onClick={filter} src={xclosesvg} alt="" />
+          <NavLink to="/modal">
+            <div className="img-1">
+              <img src={succes} alt="" />
+            </div>
+          </NavLink>
+          <NavLink onClick={filter} className="img-2" to={"/main/first"}>
+            <img src={xclosesvg} alt="" />
           </NavLink>
         </div>
       </div>
-      {modalOpen && (
-        <Modal
-          closeModal={() => {
-            setModalOpen(false);
-          }}
-        />
-      )}
     </>
   );
 };

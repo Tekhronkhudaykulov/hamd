@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Back from "./Back";
+import Back from "./Back/Back";
 import { useDispatch } from "react-redux";
 import { addMeal } from "../store/orderSlice";
 import ReactLoading from "react-loading";

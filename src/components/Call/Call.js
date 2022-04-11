@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactLoading from "react-loading";
-import Phone from "../../assets/img/phone.svg";
 import axios from "axios";
-import Back from "../Back";
+import Back from "../Back/Back";
 import "./Call.scss";
-import Loading from "react-loading";
 const Call = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [call, setCall] = useState([]);

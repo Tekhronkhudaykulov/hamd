@@ -1,0 +1,90 @@
+.allVivoz{
+    background-color: #f0f8ff;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: 30px;
+    .container{
+        width: 1100px;
+        margin: 0 auto;
+        .informaboutklient{
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .allInput {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            div{
+                flex: 0 0 25%;
+            }
+            .phone-input{
+                margin-right: 9px;
+                margin-left: 9px;
+                .inputColor{
+                    background-color: #f0f8ff;
+                    height: 56px;
+                    width: 275px;
+                }
+            }
+            .inputColor{
+                background-color: #f0f8ff;
+                height: 56px;
+                width: 275px;
+            }
+            .icon{
+                color: green;
+                font-size: 50px;
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+        .samovizovP{
+            margin-left: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 260px;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .price{
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            .summa-all{
+                background: red;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: 700;
+                height: 50px;
+                margin-left: 10px;
+                margin-right: 10px;
+                padding: 10px;
+                width: 200px;
+                p{
+                    margin: 0;
+                    margin-top: 2px;
+                    margin-bottom: 2px;
+                }
+            }
+            .zakazat{
+                align-items: center;
+                background: green;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                display: flex;
+                font-size: 20px;
+                font-weight: 700;
+                height: 50px;
+                justify-content: center;
+                padding: 10px;
+                width: 200px;
+            }
+        }
+    }
+}
