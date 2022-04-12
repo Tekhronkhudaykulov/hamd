@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { PlusSquareOutlined } from "@ant-design/icons";
+import { PlusSquareOutlined, MinusSquareOutlined } from "@ant-design/icons";
 import axios from "axios";
 import "react-phone-input-2/lib/style.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -121,7 +121,11 @@ const SamovizovInput = () => {
                   value={data.phone1}
                 />
               ) : null}
-              <PlusSquareOutlined onClick={ToggleSwtich} className="icon" />
+              {change ? (
+                <MinusSquareOutlined onClick={ToggleSwtich} className="icon" />
+              ) : (
+                <PlusSquareOutlined onClick={ToggleSwtich} className="icon" />
+              )}
               <TextField
                 required
                 name="type_order"
@@ -138,22 +142,24 @@ const SamovizovInput = () => {
               />
             </div>
           </Box>
-          <div className="samovizovP">
-            {meals.map((item) => (
-              <>
-                <p>
-                  {item.name} ... {item.amount} ... {item.price} сум
-                </p>
-              </>
-            ))}
-          </div>
-          <div className="price">
-            <div className="summa-all">
-              <p>Общая сумма:</p>
-              <span>{allSum} сум</span>
+          <div className="samo-price">
+            <div className="samovizovP">
+              {meals.map((item) => (
+                <>
+                  <p>
+                    {item.name} ... {item.amount} ... {item.price} сум
+                  </p>
+                </>
+              ))}
             </div>
-            <div className="zakazat" onClick={handleSubmit}>
-              <p>Подвердить</p>
+            <div className="price">
+              <div className="summa-all">
+                <p>Общая сумма:</p>
+                <span>{allSum} сум</span>
+              </div>
+              <div className="zakazat" onClick={handleSubmit}>
+                <p>Подвердить</p>
+              </div>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import PhoneInput from "react-phone-input-2";
-import { PlusSquareOutlined } from "@ant-design/icons";
+import { PlusSquareOutlined, MinusSquareOutlined } from "@ant-design/icons";
 import BackNext from "../../Back/BackNext";
 import { clearOrder } from "../../../store/orderSlice";
 import "./DostavkaInput.scss";
@@ -211,7 +211,11 @@ const DostavkaInput = () => {
                   alwaysDefaultMask={true}
                 />
               ) : null}
-              <PlusSquareOutlined onClick={ToggleSwtich} className="icon" />
+              {change ? (
+                <MinusSquareOutlined className="icon" onClick={ToggleSwtich} />
+              ) : (
+                <PlusSquareOutlined className="icon" onClick={ToggleSwtich} />
+              )}
             </div>
             <div className="tip-fill">
               <TextField
@@ -232,7 +236,7 @@ const DostavkaInput = () => {
               />
             </div>
           </Box>
-          <div className="allResults">
+          <div className="samo-price">
             <div className="samovizovP">
               {meals.map((item) => (
                 <>

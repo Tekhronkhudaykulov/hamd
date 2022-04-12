@@ -20,15 +20,14 @@ function App() {
     const token = localStorage.getItem("token");
     dispatch(setToken(token));
   }, []);
-  const apiKey = "AIzaSyAoud-_7sLGaEDVV5s8QvtTeGzI9dunLqU";
   return (
     <BrowserRouter>
       <Routes>
+        <Route path={"login"} element={<Auth />} />
         <Route
           path={"*"}
           element={<Navigate to={!token ? "login" : "main/first"} />}
         />
-        <Route path={"login"} element={<Auth />} />
         <Route path={"main"} element={<MainPage />}>
           <Route path={"first"} element={<FirstBar />} />
           <Route path={"call"} element={<Call />} />

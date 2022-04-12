@@ -1,7 +1,7 @@
 .allVivoz{
     background-color: #f0f8ff;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
     padding-top: 30px;
     .container{
@@ -41,49 +41,53 @@
                 margin-right: 15px;
             }
         }
-        .samovizovP{
-            margin-left: 10px;
-            border: 1px solid black;
-            border-radius: 5px;
-            width: 260px;
-            padding: 5px;
-            margin-top: 10px;
-        }
-        .price{
+        .samo-price{
             display: flex;
-            align-items: center;
-            margin-top: 30px;
-            .summa-all{
-                background: red;
-                border-radius: 5px;
-                color: #fff;
-                cursor: pointer;
-                font-size: 20px;
-                font-weight: 700;
-                height: 50px;
+            // align-items: center;
+            .samovizovP{
                 margin-left: 10px;
-                margin-right: 10px;
-                padding: 10px;
-                width: 200px;
-                p{
-                    margin: 0;
-                    margin-top: 2px;
-                    margin-bottom: 2px;
-                }
-            }
-            .zakazat{
-                align-items: center;
-                background: green;
+                border: 1px solid black;
                 border-radius: 5px;
-                color: #fff;
-                cursor: pointer;
+                width: 260px;
+                padding: 5px;
+                margin-top: 10px;
+            }
+            .price{
                 display: flex;
-                font-size: 20px;
-                font-weight: 700;
-                height: 50px;
-                justify-content: center;
-                padding: 10px;
-                width: 200px;
+                align-items: center;
+                margin-top: auto;
+                .summa-all{
+                    background: red;
+                    border-radius: 5px;
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 20px;
+                    font-weight: 700;
+                    height: 50px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    padding: 10px;
+                    width: 200px;
+                    p{
+                        margin: 0;
+                        margin-top: 2px;
+                        margin-bottom: 2px;
+                    }
+                }
+                .zakazat{
+                    align-items: center;
+                    background: green;
+                    border-radius: 5px;
+                    color: #fff;
+                    cursor: pointer;
+                    display: flex;
+                    font-size: 20px;
+                    font-weight: 700;
+                    height: 50px;
+                    justify-content: center;
+                    padding: 10px;
+                    width: 200px;
+                }
             }
         }
     }

@@ -43,21 +43,23 @@ const BarAside = () => {
             <div className="bar_main_bot">
               {count.map((item) => (
                 <>
-                  {/* <button
-                    onClick={() =>
-                      dispatch(changeCount({ id: item.id, node: 1 }))
-                    }
-                  >
-                    +
-                  </button> */}
-                  <p>{item.amount}</p>
-                  {/* <button
-                    onClick={() =>
-                      dispatch(changeCount({ id: item.id, node: -1 }))
-                    }
-                  >
-                    -
-                  </button> */}
+                  <div className="buttonWindow">
+                    <button
+                      onClick={() =>
+                        dispatch(changeCount({ id: item.id, node: 1 }))
+                      }
+                    >
+                      -
+                    </button>
+                    <p>{item.amount}</p>
+                    <button
+                      onClick={() =>
+                        dispatch(changeCount({ id: item.id, node: -1 }))
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
                 </>
               ))}
             </div>
