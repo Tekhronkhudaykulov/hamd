@@ -59,10 +59,20 @@ const Curiers = () => {
             ? data.curiers
                 .filter((item) => item.id == search)
                 .map((item, id) => (
-                  <Curier item={item} curierAdd={curierAdd} id={id} />
+                  <Curier
+                    item={item}
+                    curierAdd={curierAdd}
+                    id={id}
+                    status={item.status}
+                  />
                 ))
             : data.curiers.map((item, id) => (
-                <Curier item={item} curierAdd={curierAdd} id={id} />
+                <Curier
+                  item={item}
+                  curierAdd={curierAdd}
+                  id={id}
+                  status={item.status}
+                />
               ))}
         </div>
       </div>

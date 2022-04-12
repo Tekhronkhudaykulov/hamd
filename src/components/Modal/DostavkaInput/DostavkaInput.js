@@ -78,7 +78,7 @@ const DostavkaInput = () => {
         "https://hamd.loko.uz/api/operator/order-new",
         requestData
       );
-      navigate("main/first");
+      navigate("first");
       dispatch(clearOrder(meals));
 
       console.log(response, "res");
