@@ -46,7 +46,7 @@ const BarAside = () => {
                   <div className="buttonWindow">
                     <button
                       onClick={() =>
-                        dispatch(changeCount({ id: item.id, node: 1 }))
+                        dispatch(changeCount({ id: item.id, node: -1 }))
                       }
                     >
                       -
@@ -54,7 +54,7 @@ const BarAside = () => {
                     <p>{item.amount}</p>
                     <button
                       onClick={() =>
-                        dispatch(changeCount({ id: item.id, node: -1 }))
+                        dispatch(changeCount({ id: item.id, node: 1 }))
                       }
                     >
                       +
@@ -70,11 +70,16 @@ const BarAside = () => {
           <div className="bar-total">Оплатить Сум: {allSum}</div>
         </div>
         <div className="bar-aside-bottom-img">
-          <NavLink to="/modal">
-            <div className="img-1">
-              <img src={succes} alt="" />
-            </div>
-          </NavLink>
+          {meals.length > 0 ? (
+            <NavLink to="/modal">
+              <div className="img-1">
+                <img src={succes} alt="" />
+              </div>
+            </NavLink>
+          ) : (
+            ""
+          )}
+
           <NavLink onClick={filter} className="img-2" to={"/main/first"}>
             <img src={xclosesvg} alt="" />
           </NavLink>

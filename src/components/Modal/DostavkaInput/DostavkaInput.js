@@ -9,7 +9,11 @@ import BackNext from "../../Back/BackNext";
 import { clearOrder } from "../../../store/orderSlice";
 import "./DostavkaInput.scss";
 import { useNavigate } from "react-router-dom";
-import MapDostavka from "../MapDostavka";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 const DostavkaInput = () => {
   const [valueSam, setValueSam] = useState("Доставка");
   const [phone, setPhone] = useState("");
@@ -18,19 +22,41 @@ const DostavkaInput = () => {
   const [filial, setFilial] = useState("Самарканд");
   const [strana, setStrana] = useState("Самарканд");
   const [data, setData] = useState({});
+  const [address, setAddress] = useState("");
+  const [coordinates, setCoordinates] = useState({
+    lat: 39.627,
+    lng: 66.975,
+  });
+
+  const locations = JSON.stringify(coordinates);
+
+  console.log(locations);
+
+  const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    const latLng = await getLatLng(results[0]);
+    setAddress(value);
+    setCoordinates(latLng);
+  };
+  const [map, setMap] = React.useState(null);
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+
+  const containerStyle = {
+    width: "100%",
+    height: "250px",
+  };
 
   const ToggleSwtich = () => {
     change ? setChange(false) : setChange(true);
   };
 
   const handleChange = (e) => {
-    console.log("====================================");
-    console.log({ e: e.target.name, DSADAS: "DAAAA" });
-    console.log("====================================");
     setData({
       ...data,
       [e.target.name]: e.target.value,
-      [e.target.street]: e.target.value,
       [e.target.house]: e.target.value,
       [e.target.entrance]: e.target.value,
       [e.target.floor]: e.target.value,
@@ -49,25 +75,27 @@ const DostavkaInput = () => {
     (amount, meal) => amount + meal.amount * meal.price,
     initialState
   );
+  // let lat, lng;
+  // let loc = coordinates.split(",");
+  // lat = +loc[0];
+  // lng = +loc[1];
+  // console.log(lat, "lat");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = async () => {
-    console.log("====================================");
-    console.log("click");
-    console.log("====================================");
     try {
       let requestData = {
         name: data.name,
         phone: data.phone,
         phone1: data.phone1,
-        street: data.street,
+        address: address,
         house: data.house,
+        map_location: locations,
         entrance: data.entrance,
         floor: data.floor,
         flat: data.flat,
         reference_point: data.reference_point,
-        address: "Лисунова 3, 56, 43",
-        map_location: null,
         comment: "Хорошего вам дня!",
         payment_type_id: 16,
         delivery_type_id: 12,
@@ -132,8 +160,8 @@ const DostavkaInput = () => {
                 label="Улица"
                 placeholder="Улица"
                 name="street"
-                value={data.street}
                 onChange={handleChange}
+                value={address}
               />
               <TextField
                 required
@@ -237,7 +265,60 @@ const DostavkaInput = () => {
               />
             </div>
           </Box>
-          <MapDostavka />
+          <div>
+            <PlacesAutocomplete
+              bounds={coordinates}
+              value={address}
+              onChange={setAddress}
+              onSelect={handleSelect}
+            >
+              {({
+                getInputProps,
+                suggestions,
+                getSuggestionItemProps,
+                loading,
+              }) => (
+                <div>
+                  <p>Latitude: {coordinates.lat}</p>
+                  <p>Longitude: {coordinates.lng}</p>
+
+                  <input
+                    {...getInputProps({ placeholder: "Ведите адрес клиента" })}
+                  />
+
+                  <div>
+                    {loading ? <div>...loading</div> : null}
+
+                    {suggestions.map((suggestion) => {
+                      const style = {
+                        backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                      };
+
+                      return (
+                        <div {...getSuggestionItemProps(suggestion, { style })}>
+                          {suggestion.description}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </PlacesAutocomplete>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              zoom={13}
+              center={coordinates}
+              // onLoad={onLoad}
+              onUnmount={onUnmount}
+              ref={setMap}
+            >
+              {coordinates && (
+                <Marker
+                  position={{ lat: coordinates.lat, lng: coordinates.lng }}
+                />
+              )}
+            </GoogleMap>
+          </div>
           <div className="samo-price">
             <div className="samovizovP">
               {meals.map((item) => (

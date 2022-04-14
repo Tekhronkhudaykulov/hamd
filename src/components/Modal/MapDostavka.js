@@ -1,46 +1,6 @@
 import React, { useState } from "react";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from "react-places-autocomplete";
-import {
-  GoogleMap,
-  Marker,
-  useJsApiLoader,
-  InfoBox,
-  Scrtip,
-  InfoWindow,
-  Data,
-} from "@react-google-maps/api";
-const containerStyle = {
-  width: "100%",
-  height: "250px",
-};
 
 const MapDostavka = () => {
-  const [address, setAddress] = useState("");
-  const [coordinates, setCoordinates] = useState({
-    lat: 39.627,
-    lng: 66.975,
-  });
-  const handleSelect = async (value) => {
-    const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
-    setAddress(value);
-    setCoordinates(latLng);
-  };
-  const [map, setMap] = React.useState(null);
-
-  //   const onLoad = React.useCallback(function callback(map) {
-  //     setMap(map);
-  //   }, []);
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
-
-  console.log({ map });
-
   return (
     <div>
       <PlacesAutocomplete
