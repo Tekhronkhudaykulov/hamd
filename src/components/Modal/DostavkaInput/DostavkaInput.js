@@ -9,6 +9,7 @@ import BackNext from "../../Back/BackNext";
 import { clearOrder } from "../../../store/orderSlice";
 import "./DostavkaInput.scss";
 import { useNavigate } from "react-router-dom";
+import MapDostavka from "../MapDostavka";
 const DostavkaInput = () => {
   const [valueSam, setValueSam] = useState("Доставка");
   const [phone, setPhone] = useState("");
@@ -78,7 +79,7 @@ const DostavkaInput = () => {
         "https://hamd.loko.uz/api/operator/order-new",
         requestData
       );
-      navigate("first");
+      navigate("main/first");
       dispatch(clearOrder(meals));
 
       console.log(response, "res");
@@ -236,6 +237,7 @@ const DostavkaInput = () => {
               />
             </div>
           </Box>
+          <MapDostavka />
           <div className="samo-price">
             <div className="samovizovP">
               {meals.map((item) => (

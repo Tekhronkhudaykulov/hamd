@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CurierImg from "../assets/img/courier.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getCuriers } from "../store/kurierSlice";
 import ReactLoading from "react-loading";
@@ -16,11 +15,6 @@ const Curiers = () => {
       isLoading: st.isLoading,
     };
   });
-
-  useEffect(() => {
-    dispatch(getCuriers());
-  }, []);
-  console.log(data, "kurierlar ");
   const curierAdd = (product) => {
     const curier = {
       id: product.id,
@@ -30,7 +24,9 @@ const Curiers = () => {
     };
     dispatch(addModal(curier));
   };
-
+  useEffect(() => {
+    dispatch(getCuriers());
+  }, []);
   return (
     <>
       <div className="couriers">

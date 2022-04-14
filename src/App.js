@@ -13,6 +13,7 @@ import Logout from "./components/Logout/Logout";
 import Modal from "../src/components/Modal/Modal";
 import SamovizovInput from "./components/Modal/SamovivozInput/SamovizovInput";
 import DostavkaInput from "./components/Modal/DostavkaInput/DostavkaInput";
+import { LoadScript } from "@react-google-maps/api";
 function App() {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.profile);
@@ -20,6 +21,8 @@ function App() {
     const token = localStorage.getItem("token");
     dispatch(setToken(token));
   }, []);
+  const apiKey = "AIzaSyAoud-_7sLGaEDVV5s8QvtTeGzI9dunLqU";
+
   return (
     <BrowserRouter>
       <Routes>
