@@ -3,11 +3,10 @@ import "./BarAside.scss";
 import succes from "../../assets/img/check-succes.svg";
 import xclosesvg from "../../assets/img/Xclosesvg.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { clearOrder } from "../../store/orderSlice";
 import { changeCount } from "../../store/orderSlice";
-import { Link } from "react-router-dom";
+
 const BarAside = () => {
   const dispatch = useDispatch();
   const meals = useSelector((state) => state.order.meals);
@@ -71,18 +70,19 @@ const BarAside = () => {
         </div>
         <div className="bar-aside-bottom-img">
           {meals.length > 0 ? (
-            <NavLink to="/modal">
-              <div className="img-1">
-                <img src={succes} alt="" />
-              </div>
-            </NavLink>
+            <>
+              <NavLink to="/modal">
+                <div className="img-1">
+                  <img src={succes} alt="" />
+                </div>
+              </NavLink>
+              <NavLink onClick={filter} className="img-2" to={"/main/first"}>
+                <img src={xclosesvg} alt="" />
+              </NavLink>
+            </>
           ) : (
             ""
           )}
-
-          <NavLink onClick={filter} className="img-2" to={"/main/first"}>
-            <img src={xclosesvg} alt="" />
-          </NavLink>
         </div>
       </div>
     </>

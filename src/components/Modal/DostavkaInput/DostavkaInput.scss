@@ -7,9 +7,20 @@
         font-weight: bold;
         margin: 0;
     }
+    .inputColor{
+        margin-right: 7px;
+    }
+    .inputProps{
+        width: 400px;
+        height: 35px;
+        outline: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     .samo-price{
         display: flex;
-        // align-items: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
         .samovizovP{
             margin-left: 10px;
             border: 1px solid black;

@@ -23,14 +23,7 @@ const DostavkaInput = () => {
   const [strana, setStrana] = useState("Самарканд");
   const [data, setData] = useState({});
   const [address, setAddress] = useState("");
-  const [coordinates, setCoordinates] = useState({
-    lat: 39.627,
-    lng: 66.975,
-  });
-
-  const locations = JSON.stringify(coordinates);
-
-  console.log(locations);
+  const [coordinates, setCoordinates] = useState({ lat: 39.627, lng: 66.975 });
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
@@ -46,7 +39,7 @@ const DostavkaInput = () => {
 
   const containerStyle = {
     width: "100%",
-    height: "250px",
+    height: "350px",
   };
 
   const ToggleSwtich = () => {
@@ -75,11 +68,6 @@ const DostavkaInput = () => {
     (amount, meal) => amount + meal.amount * meal.price,
     initialState
   );
-  // let lat, lng;
-  // let loc = coordinates.split(",");
-  // lat = +loc[0];
-  // lng = +loc[1];
-  // console.log(lat, "lat");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -91,8 +79,8 @@ const DostavkaInput = () => {
         phone1: data.phone1,
         address: address,
         house: data.house,
-        map_location: locations,
         entrance: data.entrance,
+        map_location_array: coordinates,
         floor: data.floor,
         flat: data.flat,
         reference_point: data.reference_point,
@@ -107,7 +95,7 @@ const DostavkaInput = () => {
         "https://hamd.loko.uz/api/operator/order-new",
         requestData
       );
-      navigate("main/first");
+      navigate("/main/first");
       dispatch(clearOrder(meals));
 
       console.log(response, "res");
@@ -279,10 +267,8 @@ const DostavkaInput = () => {
                 loading,
               }) => (
                 <div>
-                  <p>Latitude: {coordinates.lat}</p>
-                  <p>Longitude: {coordinates.lng}</p>
-
                   <input
+                    className="inputProps"
                     {...getInputProps({ placeholder: "Ведите адрес клиента" })}
                   />
 

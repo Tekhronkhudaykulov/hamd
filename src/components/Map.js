@@ -20,11 +20,10 @@ const center = {
   lat: 39.627,
   lng: 66.975,
 };
+const apiKey = "AIzaSyAoud-_7sLGaEDVV5s8QvtTeGzI9dunLqU";
 
 const AllCurierMap = () => {
   const [infoVisible, setInfoVisible] = useState(false);
-
-  const apiKey = "AIzaSyAoud-_7sLGaEDVV5s8QvtTeGzI9dunLqU";
 
   const curier = useSelector((state) => state.curier.courier);
 
@@ -50,10 +49,11 @@ const AllCurierMap = () => {
     <div className="map">
       <GoogleMap
         mapContainerStyle={containerStyle}
-        zoom={13}
+        zoom={11}
         center={center}
-        onLoad={onLoad}
+        // onLoad={onLoad}
         onUnmount={onUnmount}
+        ref={setMap}
       >
         {curier && (
           <>
