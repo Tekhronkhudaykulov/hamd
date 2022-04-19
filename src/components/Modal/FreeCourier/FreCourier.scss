@@ -1,0 +1,33 @@
+.courier-free-component{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    .about-courier{
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        border: 1px solid #61ae17;
+        cursor: pointer;
+        height: 100%;
+        width: 280px;
+        img{
+            width: 80px;
+            height: 40px;
+            object-fit: contain;
+        }
+        .courier-inform{
+            font-size: 16px;
+            font-weight: bold;
+            color: #61ae17;
+            p{
+                margin: 0;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                span{
+                    color: black;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}

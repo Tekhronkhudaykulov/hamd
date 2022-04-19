@@ -12,12 +12,12 @@ const Modal = () => {
           <p className="informaboutklient">Информация о клиенте</p>
           <BackNext />
           <div className="type-dostavka">
-            <Link to="samovivozInput">
+            {/* <Link to="samovivozInput">
               <div className="allSamovizov">
                 <img src={SamovizovPng} alt="" />
                 <p>Самовызов</p>
               </div>
-            </Link>
+            </Link> */}
             <Link to="dostavkaInput">
               <div className="allDostavka">
                 <img src={DostavkaPng} alt="" />

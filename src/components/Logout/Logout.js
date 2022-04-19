@@ -10,7 +10,7 @@ const Logout = () => {
   const navigate = useNavigate();
   const logoutButton = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/login");
     dispatch(clearOrder(meals));
   };
   return (

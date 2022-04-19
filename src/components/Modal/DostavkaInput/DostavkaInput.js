@@ -9,6 +9,7 @@ import BackNext from "../../Back/BackNext";
 import { clearOrder } from "../../../store/orderSlice";
 import "./DostavkaInput.scss";
 import { useNavigate } from "react-router-dom";
+import FreeCourier from "../FreeCourier/FreeCourier";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -25,12 +26,17 @@ const DostavkaInput = () => {
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ lat: 39.627, lng: 66.975 });
 
+  const textCor = JSON.stringify(coordinates);
+
+  console.log(typeof textCor);
+
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setAddress(value);
     setCoordinates(latLng);
   };
+
   const [map, setMap] = React.useState(null);
 
   const onUnmount = React.useCallback(function callback(map) {
@@ -41,7 +47,6 @@ const DostavkaInput = () => {
     width: "100%",
     height: "350px",
   };
-
   const ToggleSwtich = () => {
     change ? setChange(false) : setChange(true);
   };
@@ -77,10 +82,10 @@ const DostavkaInput = () => {
         name: data.name,
         phone: data.phone,
         phone1: data.phone1,
+        street: address,
         address: address,
-        house: data.house,
         entrance: data.entrance,
-        map_location_array: coordinates,
+        map_location: textCor,
         floor: data.floor,
         flat: data.flat,
         reference_point: data.reference_point,
@@ -151,7 +156,7 @@ const DostavkaInput = () => {
                 onChange={handleChange}
                 value={address}
               />
-              <TextField
+              {/* <TextField
                 required
                 id="outlined-required"
                 label="Дом"
@@ -160,7 +165,7 @@ const DostavkaInput = () => {
                 name="house"
                 value={data.house}
                 onChange={handleChange}
-              />
+              /> */}
               <TextField
                 required
                 id="outlined-required"
@@ -200,12 +205,6 @@ const DostavkaInput = () => {
                 value={data.reference_point}
                 onChange={handleChange}
               />
-              <TextField
-                required
-                id="outlined-required"
-                label="Курьеры"
-                placeholder="Курьеры"
-              />
               <div className="phone-input ">
                 <PhoneInput
                   inputClass="inputColor"
@@ -218,15 +217,17 @@ const DostavkaInput = () => {
                 />
               </div>
               {change ? (
-                <PhoneInput
-                  inputClass="inputColor"
-                  country={"uz"}
-                  onChange={handlePhone1}
-                  value={data.phone1}
-                  name="phone1"
-                  defaultMask={"(..) ...-..-.."}
-                  alwaysDefaultMask={true}
-                />
+                <div className="inputPhone">
+                  <PhoneInput
+                    inputClass="inputColor"
+                    country={"uz"}
+                    onChange={handlePhone1}
+                    value={data.phone1}
+                    name="phone1"
+                    defaultMask={"(..) ...-..-.."}
+                    alwaysDefaultMask={true}
+                  />
+                </div>
               ) : null}
               {change ? (
                 <MinusSquareOutlined className="icon" onClick={ToggleSwtich} />
@@ -294,7 +295,6 @@ const DostavkaInput = () => {
               mapContainerStyle={containerStyle}
               zoom={13}
               center={coordinates}
-              // onLoad={onLoad}
               onUnmount={onUnmount}
               ref={setMap}
             >
@@ -305,7 +305,11 @@ const DostavkaInput = () => {
               )}
             </GoogleMap>
           </div>
-          <div className="samo-price">
+          <p className="free">Свободные куреры</p>
+          <div className="courier-price">
+            <div className="free-courier">
+              <FreeCourier />
+            </div>
             <div className="samovizovP">
               {meals.map((item) => (
                 <>
@@ -315,6 +319,8 @@ const DostavkaInput = () => {
                 </>
               ))}
             </div>
+          </div>
+          <div className="samo-price">
             <div className="price">
               <div className="summa-all">
                 <p>Общая сумма:</p>
