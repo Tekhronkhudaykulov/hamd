@@ -102,7 +102,6 @@ const DostavkaInput = () => {
       );
       navigate("/main/first");
       dispatch(clearOrder(meals));
-
       console.log(response, "res");
     } catch (error) {
       console.log(error);
@@ -305,20 +304,14 @@ const DostavkaInput = () => {
               )}
             </GoogleMap>
           </div>
-          <p className="free">Свободные куреры</p>
-          <div className="courier-price">
-            <div className="free-courier">
-              <FreeCourier />
-            </div>
-            <div className="samovizovP">
-              {meals.map((item) => (
-                <>
-                  <p>
-                    {item.name} ... {item.amount} ... {item.price} сум
-                  </p>
-                </>
-              ))}
-            </div>
+          <div className="samovizovP">
+            {meals.map((item) => (
+              <>
+                <p>
+                  {item.name} ... {item.amount} ... {item.price} сум
+                </p>
+              </>
+            ))}
           </div>
           <div className="samo-price">
             <div className="price">
