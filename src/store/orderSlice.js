@@ -14,9 +14,6 @@ export const orderSlice = createSlice({
       return initialState;
     },
     addMeal: (state, action) => {
-      console.log("====================================");
-      console.log({ action });
-      console.log("====================================");
       const meals = state.meals.map((item) => {
         if (item.id == action.payload.id) {
           return {

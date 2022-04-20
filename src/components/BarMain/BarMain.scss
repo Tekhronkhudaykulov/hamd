@@ -184,48 +184,65 @@ body {
         .main_bottom_orders {
           background: #849ec8;
           margin-top: 10px;
-          padding: 20px;
-          height: 254px !important;
+          height: 350px !important;
           overflow: hidden;
           overflow-y: scroll;
           margin-top: auto;
           margin-bottom: 9px;
-          .gamburger {
-            margin-left: 20px;
-            font-size: 18px;
-            font-weight: bold;
-          }
-          p {
-            color: white;
-          }
-          .delete {
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-left: 20px;
-          }
-          .itog {
-            margin-left: 20px;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-            span:nth-child(2) {
+          .group-button{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 40px;
+            .active_button{
+              background-color: red;
               color: white;
+              border: none;
             }
-            .itog-allSuma{
-              display: flex;
-              align-items: center;
-              margin-bottom: 10px;
-              float: right;
-              font-size: 25px;
+          }
+          .all-orders{
+            padding: 20px;
+            .gamburger {
+              margin-left: 20px;
+              font-size: 18px;
               font-weight: bold;
             }
-
-            .itog-address{
-              display: flex;
-              align-items: center;
-              margin-left: -10px;
+            p {
+              color: white;
             }
+            .delete {
+              font-size: 20px;
+              font-weight: bold;
+              cursor: pointer;
+              margin-left: 20px;
+            }
+            .itog {
+              margin-left: 20px;
+              font-size: 16px;
+              font-weight: bold;
+              color: white;
+              span:nth-child(2) {
+                color: white;
+              }
+              .itog-allSuma{
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                float: right;
+                font-size: 25px;
+                font-weight: bold;
+              }
+  
+              .itog-address{
+                display: flex;
+                align-items: center;
+                margin-left: -10px;
+              }
+          }
           }
           .main_bottom_items {
             display: flex;

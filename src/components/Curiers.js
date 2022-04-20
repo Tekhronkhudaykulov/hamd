@@ -6,8 +6,11 @@ import { addModal } from "../store/kurierSlice";
 import Curier from "./Curier";
 
 const Curiers = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState({
+    status: 1,
+  });
   const dispatch = useDispatch();
+
   const data = useSelector((state) => {
     const st = state.curier;
     return {
@@ -15,6 +18,7 @@ const Curiers = () => {
       isLoading: st.isLoading,
     };
   });
+
   const curierAdd = (product) => {
     const curier = {
       id: product.id,
@@ -24,9 +28,11 @@ const Curiers = () => {
     };
     dispatch(addModal(curier));
   };
+
   useEffect(() => {
-    dispatch(getCuriers());
+    dispatch(getCuriers(search));
   }, []);
+
   return (
     <>
       <div className="couriers">
@@ -36,8 +42,6 @@ const Curiers = () => {
             type="text"
             className="curier_input"
             placeholder="Kurierning idisini kiriting"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
           />
         </div>
         <div className="loading">
@@ -51,25 +55,9 @@ const Curiers = () => {
           )}
         </div>
         <div className="all_curier">
-          {search.length > 0
-            ? data.curiers
-                .filter((item) => item.id == search)
-                .map((item, id) => (
-                  <Curier
-                    item={item}
-                    curierAdd={curierAdd}
-                    id={id}
-                    status={item.status}
-                  />
-                ))
-            : data.curiers.map((item, id) => (
-                <Curier
-                  item={item}
-                  curierAdd={curierAdd}
-                  id={id}
-                  status={item.status}
-                />
-              ))}
+          {data.curiers.map((item) => (
+            <Curier item={item} curierAdd={curierAdd} id={item.id} />
+          ))}
         </div>
       </div>
     </>

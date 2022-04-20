@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 const initialState = {
   isLoading: true,
   curiers: [],
@@ -9,10 +10,10 @@ const initialState = {
 
 export const getCuriers = createAsyncThunk(
   "curiers/getCuriers",
-  async (_, { rejectWithValue, dispatch }) => {
+  async (_, { dispatch }) => {
     try {
       const res = await axios.get(
-        "https://hamd.loko.uz/api/operator/couriers-way"
+        `https://hamd.loko.uz/api/operator/couriers-way`
       );
       return res.data.data;
     } catch (e) {
