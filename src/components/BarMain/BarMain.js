@@ -4,7 +4,6 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Curiers from "../Curiers";
 import Orders from "../Orders";
 import AllCurierMap from "../Map";
-import { NavLink } from "react-router-dom";
 
 const BarMain = () => {
   const navigate = useNavigate();
