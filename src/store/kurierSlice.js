@@ -10,10 +10,11 @@ const initialState = {
 
 export const getCuriers = createAsyncThunk(
   "curiers/getCuriers",
-  async (_, { dispatch }) => {
+  async (search, { dispatch }) => {
     try {
       const res = await axios.get(
-        `https://hamd.loko.uz/api/operator/couriers-way`
+        `https://hamd.loko.uz/api/operator/couriers-way`,
+        search
       );
       return res.data.data;
     } catch (e) {
@@ -48,5 +49,6 @@ export const curierSlice = createSlice({
   },
 });
 
-export const { setCuriers, setLoading, addModal } = curierSlice.actions;
+export const { setCuriers, setLoading, addModal, setCuriersId } =
+  curierSlice.actions;
 export default curierSlice.reducer;

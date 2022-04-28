@@ -91,12 +91,12 @@ body {
             img {
               width: 45px;
               height: 45px;
-              margin-right: 16px;
-              margin-left: 10px;
+              margin-right: 5px;
+              margin-left: 5px;
             }
             p {
               margin: 4px;
-              font-size: 8px;
+              font-size: 9px;
               font-weight: bold;
               span {
                 color: #61ae17;
@@ -191,7 +191,7 @@ body {
           margin-bottom: 9px;
           .group-button{
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             position: sticky;
             top: 0;
             left: 0;
@@ -208,41 +208,36 @@ body {
             padding: 20px;
             .gamburger {
               margin-left: 20px;
-              font-size: 18px;
+              font-size: 20px;
               font-weight: bold;
             }
             p {
+              margin-top: 7px;
+              margin-bottom: 7px;
               color: white;
-            }
-            .delete {
-              font-size: 20px;
-              font-weight: bold;
-              cursor: pointer;
-              margin-left: 20px;
             }
             .itog {
               margin-left: 20px;
-              font-size: 16px;
               font-weight: bold;
               color: white;
-              span:nth-child(2) {
-                color: white;
+              span{
+                font-size: 18px;
               }
+            }
               .itog-allSuma{
                 display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-                float: right;
-                font-size: 25px;
-                font-weight: bold;
+                flex-direction: column;
+                margin-left: 20px;
+                margin-top: 5px;
+                span{
+                  margin-top: 5px;
+                  margin-bottom: 5px;
+                  color: white;
+                  font-size: 20px;
+                  font-weight: bold;
+
+                }
               }
-  
-              .itog-address{
-                display: flex;
-                align-items: center;
-                margin-left: -10px;
-              }
-          }
           }
           .main_bottom_items {
             display: flex;

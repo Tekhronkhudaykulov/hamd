@@ -4,12 +4,15 @@ import { getCuriers } from "../store/kurierSlice";
 import ReactLoading from "react-loading";
 import { addModal } from "../store/kurierSlice";
 import Curier from "./Curier";
+import CourierInput from "./Courier/CourierInput";
 
 const Curiers = () => {
-  const [search, setSearch] = useState({
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState("");
+  const [courerFilter, setCourerFilter] = useState({
+    search: "",
     status: 1,
   });
-  const dispatch = useDispatch();
 
   const data = useSelector((state) => {
     const st = state.curier;
@@ -25,12 +28,13 @@ const Curiers = () => {
       name: product.courier.name,
       addres: product.address,
       map_location: product.map_location,
+      phone: product.courier.phone,
     };
     dispatch(addModal(curier));
   };
 
   useEffect(() => {
-    dispatch(getCuriers(search));
+    dispatch(getCuriers(courerFilter));
   }, []);
 
   return (
@@ -38,10 +42,15 @@ const Curiers = () => {
       <div className="couriers">
         <div className="input-title">
           <p className="curier-title">Курьеры</p>
-          <input
-            type="text"
-            className="curier_input"
-            placeholder="Kurierning idisini kiriting"
+          <CourierInput
+            onChengeSearch={(search) => {
+              let newFilter = {
+                ...courerFilter,
+                search,
+              };
+              // dispatch(getCuriers(newFilter));
+              setCourerFilter(newFilter);
+            }}
           />
         </div>
         <div className="loading">

@@ -9,7 +9,6 @@ import BackNext from "../../Back/BackNext";
 import { clearOrder } from "../../../store/orderSlice";
 import "./DostavkaInput.scss";
 import { useNavigate } from "react-router-dom";
-import FreeCourier from "../FreeCourier/FreeCourier";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -26,9 +25,7 @@ const DostavkaInput = () => {
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ lat: 39.627, lng: 66.975 });
 
-  const textCor = JSON.stringify(coordinates);
-
-  console.log(typeof textCor);
+  // const coordinate = JSON.stringify(coordinates);
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
@@ -64,7 +61,6 @@ const DostavkaInput = () => {
   };
 
   const meals = useSelector((state) => state.order.meals);
-
   const products_id = meals.map((item) => item.id);
   const products_amount = meals.map((item) => item.amount);
   const productName = meals.map((item) => item.name);
@@ -73,7 +69,6 @@ const DostavkaInput = () => {
     (amount, meal) => amount + meal.amount * meal.price,
     initialState
   );
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = async () => {
@@ -85,7 +80,7 @@ const DostavkaInput = () => {
         street: address,
         address: address,
         entrance: data.entrance,
-        map_location: textCor,
+        map_location: `${coordinates.lat}, ${coordinates.lng}`,
         floor: data.floor,
         flat: data.flat,
         reference_point: data.reference_point,

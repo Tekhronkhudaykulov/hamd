@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { MdOutlineLocationOn } from "react-icons/md";
 
 import axios from "axios";
 
@@ -33,23 +32,32 @@ const Orders = () => {
             }}
             className={activeButton === "button1" ? `active_button` : ""}
           >
+            Список заказов
+          </button>
+          <button
+            onClick={() => {
+              fetchData(1);
+              setActiveButton("button2");
+            }}
+            className={activeButton === "button2" ? `active_button` : ""}
+          >
             Принятые заказы
           </button>
           <button
             onClick={() => {
               fetchData(2);
-              setActiveButton("button2");
+              setActiveButton("button3");
             }}
-            className={activeButton === "button2" ? `active_button` : ""}
+            className={activeButton === "button3" ? `active_button` : ""}
           >
             Заказы в пути
           </button>
           <button
             onClick={() => {
               fetchData(3);
-              setActiveButton("button3");
+              setActiveButton("button4");
             }}
-            className={activeButton === "button3" ? `active_button` : ""}
+            className={activeButton === "button4" ? `active_button` : ""}
           >
             Завершенные заказы
           </button>
@@ -59,13 +67,13 @@ const Orders = () => {
             <>
               <div className="main_bottom_items">
                 <div className="main_bottom_border"></div>
-                <p>#{item.id}</p>
+                <p>id:{item.id}</p>
                 <div className="main_bottom_border"></div>
               </div>
               {item.orderProducts &&
                 item.orderProducts.map((item) => (
                   <p className="gamburger">
-                    {item.product.name} ... {item.count} ...
+                    {item.product.name} ..кл: {item.count} ...
                     {item.product.price}
                     сум
                   </p>
@@ -73,17 +81,16 @@ const Orders = () => {
               {
                 <>
                   <div className="itog">
-                    <div className="itog-address">
-                      <MdOutlineLocationOn
-                        size={50}
-                        style={{ color: "white" }}
-                      />
-                      <span>{item.address}</span>
-                    </div>
-                    <div className="itog-allSuma">
-                      <span>Итог......</span>
-                      <span>{item.product_total_sum} сум</span>
-                    </div>
+                    <span>Адресс доставки: {item.address}</span>
+                  </div>
+                  <div className="itog-allSuma">
+                    <span>Сумма доставки: {item.delivery_price}сум</span>
+                    <span>Сумма заказа: {item.product_total_sum} сум</span>
+                    <span style={{ color: "white" }}>
+                      Итог......
+                      {item.delivery_price + item.product_total_sum}
+                      сум
+                    </span>
                   </div>
                 </>
               }

@@ -76,6 +76,9 @@ const AllCurierMap = () => {
                   <p>
                     Маршрут: <span>{curier.addres}</span>
                   </p>
+                  <p>
+                    Тел: <span>{curier.phone}</span>
+                  </p>
                 </div>
               </InfoWindow>
             )}

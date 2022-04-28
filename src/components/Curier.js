@@ -18,6 +18,10 @@ const Curier = ({ item, curierAdd, id }) => {
             <span>Маршрут:</span>
             {item.address}
           </p>
+          <p>
+            <span>Тел:</span>
+            {item.courier.phone}
+          </p>
         </div>
       </div>
     </div>
